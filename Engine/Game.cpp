@@ -27,7 +27,7 @@ Game::Game(MainWindow& wnd)
 	gfx(wnd),
 	xDist(70, 730),
 	yDist(70, 530),
-	pepe_lifespan(0.3f, 0.8f),
+	pepe_lifespan(0.3f, 0.6f),
 	rng(e()),
 	hammer(400, 400),
 	score(Vec2(0, 0)),

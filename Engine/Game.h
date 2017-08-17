@@ -57,7 +57,7 @@ private:
 	std::uniform_real_distribution<float> xDist;
 	std::uniform_real_distribution<float> yDist;
 	std::uniform_real_distribution<float> pepe_lifespan;
-	static constexpr int max_pepes = 30;
+	static constexpr int max_pepes = 25;
 	static constexpr float d_spawn = 0.8f;
 	float spawn_time = d_spawn;
 	float time = 0.0f;
