@@ -23,6 +23,14 @@
 #include "Keyboard.h"
 #include "Mouse.h"
 #include "Graphics.h"
+#include "Hammer.h"
+#include "FrameTimer.h"
+#include "Pepe.h"
+#include <vector>
+#include <random>
+#include "Start.h"
+#include "End.h"
+
 
 class Game
 {
@@ -36,10 +44,31 @@ private:
 	void UpdateModel();
 	/********************************/
 	/*  User Functions              */
+
+	void spawn_pepes(float dt, End& end);
+
 	/********************************/
 private:
 	MainWindow& wnd;
 	Graphics gfx;
+	FrameTimer ft;
+	std::random_device e;
+	std::mt19937 rng;
+	std::uniform_real_distribution<float> xDist;
+	std::uniform_real_distribution<float> yDist;
+	std::uniform_real_distribution<float> pepe_lifespan;
+	static constexpr int max_pepes = 30;
+	static constexpr float d_spawn = 0.8f;
+	float spawn_time = d_spawn;
+	float time = 0.0f;
+
+	Hammer hammer;
+	std::vector<Pepe> pepes;
+	Score score;
+	Start start;
+	End end;
+	bool started = false;
+	bool game_over = false;
 	/********************************/
 	/*  User Variables              */
 	/********************************/

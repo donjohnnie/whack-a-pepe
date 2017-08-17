@@ -107,6 +107,10 @@ public:
 		return buffer.empty();
 	}
 	void Flush();
+	void set_left_false()
+	{
+		leftIsPressed = false;
+	}
 private:
 	void OnMouseMove( int x,int y );
 	void OnMouseLeave();
