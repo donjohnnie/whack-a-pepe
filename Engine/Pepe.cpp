@@ -2,7 +2,7 @@
 
 void Pepe::update(float dt, Score& score)
 {
-	if(alive)
+	if(state == State::Alive)
 	{
 		if(age >= lifespan)
 		{
@@ -25,10 +25,10 @@ void Pepe::update(float dt, Score& score)
 
 void Pepe::draw(Graphics & gfx) const
 {
-	if(alive)
+	if(state == State::Alive)
 	{
-		const int in_x = pos.x;
-		const int in_y = pos.y;
+		const int in_x = int(pos.x);
+		const int in_y = int(pos.y);
 
 		gfx.PutPixel(20 + in_x, 0 + in_y, 102, 153, 102);
 		gfx.PutPixel(21 + in_x, 0 + in_y, 83, 169, 83);
@@ -2854,12 +2854,12 @@ void Pepe::draw(Graphics & gfx) const
 		gfx.PutPixel(41 + in_x, 56 + in_y, 84, 169, 84);
 		gfx.PutPixel(42 + in_x, 56 + in_y, 84, 169, 84);
 	}
-	else if(killed)
+	else if(state == State::Killed)
 	{
 		if(age < dead_time)
 		{
-			const int in_x = pos.x;
-			const int in_y = pos.y;
+			const int in_x = int(pos.x);
+			const int in_y = int(pos.y);
 			gfx.PutPixel(20 + in_x, 0 + in_y, 102, 153, 102);
 			gfx.PutPixel(21 + in_x, 0 + in_y, 83, 169, 83);
 			gfx.PutPixel(22 + in_x, 0 + in_y, 83, 169, 83);
@@ -5690,12 +5690,12 @@ void Pepe::draw(Graphics & gfx) const
 
 RectF Pepe::get_hitbox() const
 {
-	return RectF::MakeRect(pos, width, height);
+	return RectF::MakeRect(pos, float(width), float(height));
 }
 
 bool Pepe::is_dead() const
 {
-	return !alive;
+	return state == State::Dead;
 }
 
 Vec2 Pepe::get_pos() const
@@ -5705,11 +5705,11 @@ Vec2 Pepe::get_pos() const
 
 void Pepe::set_killed()
 {
-	killed = true;
+	state = State::Killed;
 }
 
 void Pepe::set_dead()
 {
-	alive = false;
+	state = State::Dead;
 	age = 0.0f;
 }

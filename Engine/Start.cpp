@@ -2,8 +2,8 @@
 
 void Start::draw(Graphics & gfx) const
 {
-	const int in_x = pos.x;
-	const int in_y = pos.y;
+	const int in_x = int(pos.x);
+	const int in_y = int(pos.y);
 
 	gfx.PutPixel(184 + in_x, 0 + in_y, 127, 127, 137);
 	gfx.PutPixel(185 + in_x, 0 + in_y, 188, 199, 210);

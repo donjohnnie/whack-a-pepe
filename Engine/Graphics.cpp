@@ -318,9 +318,9 @@ void Graphics::PutPixel( int x,int y,Color c )
 
 void Graphics::DrawRect(const RectF & r, Color c)
 {
-	for(int i = r.left; i <= r.right; i++)
+	for(int i = int(r.left); i <= int(r.right); i++)
 	{
-		for(int j = r.top; j < r.bottom; j++)
+		for(int j = int(r.top); j < int(r.bottom); j++)
 		{
 			PutPixel(i, j, c);
 		}

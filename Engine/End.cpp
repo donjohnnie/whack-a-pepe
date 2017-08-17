@@ -2,8 +2,8 @@
 
 void End::draw(Graphics & gfx) const
 {
-	const int in_x = pos.x;
-	const int in_y = pos.y;
+	const int in_x = int(pos.x);
+	const int in_y = int(pos.y);
 
 	if(state == State::Won)
 	{

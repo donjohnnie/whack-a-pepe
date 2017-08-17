@@ -6,6 +6,12 @@
 
 class Pepe
 {
+	enum class State
+	{
+		Alive,
+		Dead,
+		Killed
+	};
 public:
 	Pepe() = default;
 	Pepe(float x, float y, float lf):
@@ -32,6 +38,5 @@ private:
 	float age = 0.0f;
 	Vec2 pos;
 	float lifespan;
-	bool alive = true;
-	bool killed = false;
+	State state;
 };

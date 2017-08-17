@@ -20,12 +20,12 @@ void Score::draw(Graphics & gfx) const
 
 RectF Score::get_rect_ham() const
 {
-	return RectF::MakeRect(pos, width, ham*height);
+	return RectF::MakeRect(pos, float(width), float(ham*height));
 }
 
 RectF Score::get_rect_pepe() const
 {
-	return RectF::MakeRect(Vec2(pos.x + width+1, pos.y), width, pepe*height);
+	return RectF::MakeRect(Vec2(pos.x + width+1, pos.y), float(width), float(pepe*height));
 }
 
 int Score::get_ham_score() const

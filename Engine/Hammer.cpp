@@ -17,8 +17,8 @@ void Hammer::draw(Graphics & gfx) const
 
 void Hammer::draw_nw(Graphics & gfx) const
 {
-	const int in_x = pos.x;
-	const int in_y = pos.y;
+	const int in_x = int(pos.x);
+	const int in_y = int(pos.y);
 
 	gfx.PutPixel(29 + in_x, 0 + in_y, 85, 85, 85);
 	gfx.PutPixel(30 + in_x, 0 + in_y, 61, 61, 61);
@@ -2976,8 +2976,8 @@ void Hammer::draw_nw(Graphics & gfx) const
 }
 void Hammer::draw_w(Graphics& gfx) const
 {
-	const int in_x = pos.x;
-	const int in_y = pos.y;
+	const int in_x = int(pos.x);
+	const int in_y = int(pos.y);
 
 	gfx.PutPixel(10 + in_x, 15 + in_y, 68, 68, 68);
 	gfx.PutPixel(11 + in_x, 15 + in_y, 69, 69, 69);
@@ -5775,7 +5775,7 @@ void Hammer::update(Mouse & ms, float dt)
 
 void Hammer::handle_input(Mouse & ms)
 {
-	Vec2 m_pos = Vec2(ms.GetPosX(), ms.GetPosY());
+	Vec2 m_pos = Vec2(float(ms.GetPosX()), float(ms.GetPosY()));
 	m_pos = Vec2(m_pos.x - width / 2, m_pos.y - height / 2);
 	pos = m_pos;
 	if(ms.LeftIsPressed())
@@ -5808,5 +5808,5 @@ void Hammer::release()
 
 RectF Hammer::get_hitbox() const
 {
-	return RectF::MakeRect(pos, hitbox, hitbox);
+	return RectF::MakeRect(pos, float(hitbox), float(hitbox));
 }
