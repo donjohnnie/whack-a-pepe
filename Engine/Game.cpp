@@ -52,10 +52,10 @@ void Game::UpdateModel()
 		pepe.update(dt, score);
 		hammer.check_pepe(pepe, score);
 	}
-	spawn_pepes(dt, end);
+	spawn_pepes(dt);
 }
 
-void Game::spawn_pepes(float dt, End& end)
+void Game::spawn_pepes(float dt)
 {
 	if(started)
 	{

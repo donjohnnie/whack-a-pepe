@@ -45,7 +45,7 @@ private:
 	/********************************/
 	/*  User Functions              */
 
-	void spawn_pepes(float dt, End& end);
+	void spawn_pepes(float dt);
 
 	/********************************/
 private:

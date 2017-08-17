@@ -35,5 +35,4 @@ private:
 	static constexpr int hitbox = 65;
 	Vec2 pos;
 	State state = State::NotWhacking;
-	Score score;
 };
