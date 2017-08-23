@@ -21,18 +21,18 @@
 #include "MainWindow.h"
 #include "Game.h"
 
-Game::Game(MainWindow& wnd)
+Game::Game( MainWindow& wnd )
 	:
-	wnd(wnd),
-	gfx(wnd),
-	xDist(70, 730),
-	yDist(70, 530),
-	pepe_lifespan(0.25f, 0.5f),
-	rng(e()),
-	hammer(400, 400),
-	score(Vec2(0, 0)),
-	start(Vec2(200, 200)),
-	end(Vec2(350, 200))
+	wnd( wnd ),
+	gfx( wnd ),
+	xDist( 70, 730 ),
+	yDist( 70, 530 ),
+	pepe_lifespan( 0.25f, 0.5f ),
+	rng( e() ),
+	hammer( 400, 400 ),
+	score( Vec2( 0, 0 ) ),
+	start( Vec2( 200, 50 ) ),
+	end( Vec2( 350, 200 ) )
 { }
 
 void Game::Go()
@@ -46,29 +46,29 @@ void Game::Go()
 void Game::UpdateModel()
 {
 	const auto dt = ft.Mark();
-	hammer.update(wnd.mouse, dt);
-	for(auto& pepe : pepes)
+	hammer.update( wnd.mouse, dt );
+	for( auto& pepe : pepes )
 	{
-		pepe.update(dt, score);
-		hammer.check_pepe(pepe, score);
+		pepe.update( dt, score );
+		hammer.check_pepe( pepe, score );
 	}
-	spawn_pepes(dt);
+	spawn_pepes( dt );
 }
 
-void Game::spawn_pepes(float dt)
+void Game::spawn_pepes( float dt )
 {
-	if(started)
+	if( started )
 	{
-		if(!game_over)
+		if( !game_over )
 		{
-			if(pepes.size() <= max_pepes)
+			if( pepes.size() <= max_pepes )
 			{
 				time += dt;
-				if(time >= spawn_time)
+				if( time >= spawn_time )
 				{
-					if(pepes.size() == 0)
+					if( pepes.size() == 0 )
 					{
-						pepes.push_back(Pepe(xDist(rng), yDist(rng), pepe_lifespan(rng)));
+						pepes.push_back( Pepe( xDist( rng ), yDist( rng ), pepe_lifespan( rng ) ) );
 						wnd.mouse.set_left_false();
 					}
 					else
@@ -76,11 +76,11 @@ void Game::spawn_pepes(float dt)
 						Vec2 pos;
 						do
 						{
-							pos.x = xDist(rng);
-							pos.y = yDist(rng);
+							pos.x = xDist( rng );
+							pos.y = yDist( rng );
 
-						} while((pos - pepes.back().get_pos()).GetLengthSq() < 200 * 200);
-						pepes.push_back(Pepe(pos, pepe_lifespan(rng)));
+						} while( (pos - pepes.back().get_pos()).GetLengthSq() < 200 * 200 );
+						pepes.push_back( Pepe( pos, pepe_lifespan( rng ) ) );
 						wnd.mouse.set_left_false();
 					}
 					spawn_time += d_spawn;
@@ -88,7 +88,7 @@ void Game::spawn_pepes(float dt)
 			}
 			else
 			{
-				if(score.get_ham_score() / 2 <= score.get_pepe_score())
+				if( score.get_ham_score() / 2 <= score.get_pepe_score() )
 				{
 					end.set_state_lost();
 				}
@@ -102,7 +102,7 @@ void Game::spawn_pepes(float dt)
 	}
 	else
 	{
-		if(wnd.kbd.KeyIsPressed(VK_RETURN))
+		if( wnd.kbd.KeyIsPressed( VK_RETURN ) )
 		{
 			started = true;
 		}
@@ -111,24 +111,24 @@ void Game::spawn_pepes(float dt)
 
 void Game::ComposeFrame()
 {
-	if(started)
+	if( started )
 	{
-		if(!game_over)
+		if( !game_over )
 		{
-			for(auto& pepe : pepes)
+			for( auto& pepe : pepes )
 			{
-				pepe.draw(gfx);
+				pepe.draw( gfx );
 			}
-			score.draw(gfx);
-			hammer.draw(gfx);
+			score.draw( gfx );
+			hammer.draw( gfx );
 		}
 		else
 		{
-			end.draw(gfx);
+			end.draw( gfx );
 		}
 	}
 	else
 	{
-		start.draw(gfx);
+		start.draw( gfx );
 	}
 }

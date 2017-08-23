@@ -14,5 +14,9 @@ public:
 	void draw(Graphics& gfx) const;
 
 private:
+	static constexpr Color chroma_key = Color( 22, 23, 22 );
+
 	Vec2 pos;
+
+	Surface sprite_start = Surface( "diamondpepe.bmp" );
 };
