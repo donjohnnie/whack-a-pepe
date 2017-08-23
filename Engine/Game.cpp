@@ -27,7 +27,7 @@ Game::Game(MainWindow& wnd)
 	gfx(wnd),
 	xDist(70, 730),
 	yDist(70, 530),
-	pepe_lifespan(0.3f, 0.6f),
+	pepe_lifespan(0.25f, 0.5f),
 	rng(e()),
 	hammer(400, 400),
 	score(Vec2(0, 0)),
@@ -79,7 +79,7 @@ void Game::spawn_pepes(float dt)
 							pos.x = xDist(rng);
 							pos.y = yDist(rng);
 
-						} while((pos - pepes.back().get_pos()).GetLengthSq() < 160 * 160);
+						} while((pos - pepes.back().get_pos()).GetLengthSq() < 200 * 200);
 						pepes.push_back(Pepe(pos, pepe_lifespan(rng)));
 						wnd.mouse.set_left_false();
 					}

@@ -34,8 +34,13 @@ private:
 	static constexpr int width = 60;
 	static constexpr int height = 57;
 	static constexpr float dead_time = 1.5f;
+	static constexpr Color chroma_key = Colors::Black;
+
 	Vec2 pos;
 	float age = 0.0f;
 	float lifespan;
 	State state = State::Alive;
+
+	Surface alive_pepe = Surface( "pepe.bmp" );
+	Surface killed_pepe = Surface( "deadpepe.bmp" );
 };
