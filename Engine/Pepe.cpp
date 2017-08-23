@@ -5695,7 +5695,8 @@ RectF Pepe::get_hitbox() const
 
 bool Pepe::is_dead() const
 {
-	return state == State::Dead;
+	return state == State::Dead ||
+		state == State::Killed;
 }
 
 Vec2 Pepe::get_pos() const

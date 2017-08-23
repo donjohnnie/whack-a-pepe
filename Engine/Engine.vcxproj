@@ -156,6 +156,7 @@
     <ClInclude Include="Sound.h" />
     <ClInclude Include="SoundEffect.h" />
     <ClInclude Include="Start.h" />
+    <ClInclude Include="Surface.h" />
     <ClInclude Include="Vec2.h" />
   </ItemGroup>
   <ItemGroup>
@@ -175,6 +176,7 @@
     <ClCompile Include="Score.cpp" />
     <ClCompile Include="Sound.cpp" />
     <ClCompile Include="Start.cpp" />
+    <ClCompile Include="Surface.cpp" />
     <ClCompile Include="Vec2.cpp" />
   </ItemGroup>
   <ItemGroup>

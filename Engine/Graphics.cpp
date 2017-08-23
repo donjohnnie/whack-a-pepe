@@ -327,6 +327,37 @@ void Graphics::DrawRect(const RectF & r, Color c)
 	}
 }
 
+void Graphics::DrawSprite( int x,int y,const Surface& sf )
+{
+	const int width = sf.GetWidth();
+	const int height = sf.GetHeight();
+	for( int sy = 0; sy < height; sy++ )
+	{
+		for( int sx = 0; sx < width; sx++ )
+		{
+			PutPixel( x + sx, y + sy, Color( sx, sy ) );
+		}
+	}
+}
+
+void Graphics::DrawSprite( int x, int y, const Surface & s, const Color & chroma_key )
+{
+	const int width = s.GetWidth();
+	const int height = s.GetHeight();
+	for( int sy = 0; sy < height; sy++ )
+	{
+		for( int sx = 0; sx < width; sx++ )
+		{
+			auto pc = s.GetPixel( sx, sy );
+			if( pc != chroma_key )
+			{
+				PutPixel( x + sx, y + sy, pc );
+			}
+		}
+	}
+}
+
+
 
 //////////////////////////////////////////////////
 //           Graphics Exception
